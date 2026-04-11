@@ -6,10 +6,30 @@
 <title>Botanixy</title>
 
 <style>
+:root {
+    --bg: #f7faf7;
+    --text: #333;
+    --card: white;
+    --primary: #2e7d32;
+    --secondary: #e8f5e9;
+    --shadow: rgba(0,0,0,0.08);
+}
+
+/* DARK MODE */
+body.dark {
+    --bg: #0f1720;
+    --text: #e5e7eb;
+    --card: #1e293b;
+    --primary: #4ade80;
+    --secondary: #1f2937;
+    --shadow: rgba(0,0,0,0.4);
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #f7faf7;
+    background: var(--bg);
+    color: var(--text);
 }
 
 /* CONTAINER */
@@ -20,9 +40,9 @@ body {
 
 /* HEADER */
 header {
-    background: white;
+    background: var(--card);
     padding: 15px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px var(--shadow);
 }
 
 .header-inner {
@@ -32,47 +52,31 @@ header {
 }
 
 h1 {
-    color: #2e7d32;
+    color: var(--primary);
 }
 
-/* NAV LINKS */
+/* NAV */
 .nav-link {
     margin-left: 15px;
     text-decoration: none;
-    color: #333;
+    color: var(--text);
     font-weight: 500;
     padding: 8px 14px;
     border-radius: 20px;
-    position: relative;
     transition: 0.3s;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
-/* HOVER */
 .nav-link:hover {
-    background: #e8f5e9;
-    color: #2e7d32;
+    background: var(--secondary);
+    color: var(--primary);
 }
 
-/* ACTIVE */
 .nav-link.active {
-    background: #2e7d32;
+    background: var(--primary);
     color: white;
-}
-
-/* UNDERLINE ANIMATION */
-.nav-link::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: #2e7d32;
-    left: 0;
-    bottom: -3px;
-    transition: 0.3s;
-}
-
-.nav-link:hover::after {
-    width: 100%;
 }
 
 /* HERO */
@@ -91,11 +95,6 @@ h1 {
     margin-bottom: 10px;
 }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 25px;
-}
-
 .hero button {
     padding: 12px 28px;
     background: #66bb6a;
@@ -106,7 +105,7 @@ h1 {
 }
 
 .hero button:hover {
-    background: #2e7d32;
+    background: var(--primary);
 }
 
 /* SECTION */
@@ -115,22 +114,11 @@ h1 {
     text-align: center;
 }
 
-.tight-top {
-    padding-top: 10px;
-}
-
 .section h2 {
-    color: #2e7d32;
-    margin-bottom: 15px;
+    color: var(--primary);
 }
 
-.section p {
-    color: #555;
-    max-width: 650px;
-    margin: 0 auto 30px;
-}
-
-/* CATEGORY */
+/* CATEGORIES */
 .categories {
     display: flex;
     justify-content: center;
@@ -139,18 +127,16 @@ h1 {
 }
 
 .category {
-    background: #e8f5e9;
+    background: var(--secondary);
     padding: 10px 18px;
     border-radius: 20px;
     cursor: pointer;
     transition: 0.3s;
-    font-weight: 500;
 }
 
 .category:hover {
-    background: #2e7d32;
+    background: var(--primary);
     color: white;
-    transform: translateY(-3px);
 }
 
 /* PRODUCTS */
@@ -161,10 +147,10 @@ h1 {
 }
 
 .product {
-    background: white;
+    background: var(--card);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px var(--shadow);
     transition: 0.3s;
 }
 
@@ -183,95 +169,63 @@ h1 {
     text-align: left;
 }
 
-.product h4 {
-    margin: 0;
+.product p {
+    font-weight: bold;
+    color: var(--primary);
 }
 
 .tag {
     font-size: 12px;
-    background: #e8f5e9;
+    background: var(--secondary);
     padding: 4px 8px;
-    border-radius: 5px;
-    margin-top: 5px;
-    display: inline-block;
-}
-
-.product p {
-    font-weight: bold;
-    margin: 5px 0;
-    color: #2e7d32;
-}
-
-.product button {
-    margin-top: 10px;
-    width: 100%;
-    padding: 8px;
-    background: #2e7d32;
-    color: white;
-    border: none;
     border-radius: 5px;
 }
 
 /* INITIATIVE */
 .initiative {
-    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
-    border-radius: 20px;
+    background: var(--secondary);
     padding: 40px;
+    border-radius: 20px;
+    margin-top: 40px;
 }
 
 .initiative-content {
     display: flex;
-    align-items: center;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
-    text-align: left;
+    align-items: center;
 }
 
-.initiative-text {
-    flex: 1;
-}
-
-.initiative-btn {
-    padding: 10px 20px;
-    background: #2e7d32;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.initiative-btn:hover {
-    background: #1b5e20;
-}
-
-.initiative-slider {
-    flex: 1;
-}
-
-/* SLIDER */
+/* SLIDER FIX */
 .slider {
     overflow: hidden;
     border-radius: 15px;
+    width: 300px;
 }
 
 .slides {
     display: flex;
-    transition: 0.5s;
+    transition: 0.5s ease;
 }
 
 .slides img {
-    width: 100%;
-    height: 300px;
+    width: 300px;
+    height: 200px;
     object-fit: cover;
     flex-shrink: 0;
 }
 
 /* FOOTER */
 footer {
-    background: #1b5e20;
+    background: var(--primary);
     color: white;
     text-align: center;
     padding: 20px;
+}
+
+/* NAV FIX */
+nav a {
+    text-decoration: none;
 }
 </style>
 </head>
@@ -283,9 +237,12 @@ footer {
         <h1>🌿 Botanixy</h1>
 
         <nav>
-            <a href="#" class="nav-link active">Home</a>
-            <a href="#" class="nav-link">Plants</a>
-            <a href="#" class="nav-link">Care</a>
+            <a href="homePage.html" class="nav-link active">Home</a>
+            <a href="plants.html" class="nav-link">Plants</a>
+            <a href="careGuide.html" class="nav-link">Care</a>
+            <a href="login.html" class="nav-link">Login</a>
+
+            <button id="themeToggle" class="nav-link">🌙 Dark</button>
         </nav>
     </div>
 </header>
@@ -296,39 +253,20 @@ footer {
     <p>Discover plants that fit your lifestyle</p>
     <button>Shop Now</button>
 </div>
+
 <!-- CATEGORIES -->
 <div class="section container">
     <h2>Shop by Category</h2>
-    <p>Find plants that match your space, lifestyle, and care level</p>
-
     <div class="categories">
-
-        <div class="category" onclick="filterCategory('indoor')">
-            Indoor Plants
-        </div>
-
-        <div class="category" onclick="filterCategory('air')">
-            Air Purifying
-        </div>
-
-        <div class="category" onclick="filterCategory('low')">
-            Low Maintenance
-        </div>
-
-        <div class="category" onclick="filterCategory('succulent')">
-            Succulents
-        </div>
-
-        <div class="category" onclick="filterCategory('flowering')">
-            Flowering Plants
-        </div>
-
-        <div class="category" onclick="filterCategory('office')">
-            Office Plants
-        </div>
-
+        <div class="category">Indoor Plants</div>
+        <div class="category">Air Purifying</div>
+        <div class="category">Low Maintenance</div>
+        <div class="category">Succulents</div>
+        <div class="category">Flowering Plants</div>
+        <div class="category">Office Plants</div>
     </div>
 </div>
+
 <!-- PRODUCTS -->
 <div class="section container">
     <h2>Popular Plants</h2>
@@ -476,7 +414,6 @@ footer {
             </div>
         </div>
 
-
         <div class="product">
             <img src="https://images.unsplash.com/photo-1599423300746-b62533397364">
             <div class="product-content">
@@ -509,33 +446,27 @@ footer {
 
     </div>
 </div>
-
 <!-- INITIATIVE -->
 <div class="section container">
     <div class="initiative">
         <div class="initiative-content">
 
-            <div class="initiative-text">
+            <div>
                 <h2>🌱 Our Plant Initiative</h2>
-                <p>
-                    We support tree plantations and eco-friendly living.
-                    Every step with Botanixy helps build a greener future.
-                </p>
-                <button class="initiative-btn">Join the Movement</button>
+                <p>We support eco-friendly living and tree plantation.</p>
             </div>
 
-            <div class="initiative-slider">
-                <div class="slider">
-                    <div class="slides" id="slides">
-                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
-                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735">
-                    </div>
+            <div class="slider">
+                <div class="slides" id="slides">
+                    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+                    <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735">
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+
 
 <footer>
     <p>© 2026 Botanixy 🌿</p>
@@ -546,18 +477,31 @@ let index = 0;
 
 function showSlide() {
     const slides = document.getElementById("slides");
+    if (!slides) return;
+
     const total = slides.children.length;
+    index = (index + 1) % total;
 
-    if (index >= total) index = 0;
-
-    slides.style.transform = "translateX(-" + index * 100 + "%)";
+    slides.style.transform = "translateX(-" + index * 300 + "px)";
 }
 
-setInterval(() => {
-    index++;
-    showSlide();
-}, 3000);
+setInterval(showSlide, 3000);
+
+/* SAFE THEME TOGGLE */
+const toggleBtn = document.getElementById("themeToggle");
+
+if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        toggleBtn.textContent =
+            document.body.classList.contains("dark")
+                ? "☀️ Light"
+                : "🌙 Dark";
+    });
+}
 </script>
 
 </body>
 </html>
+
