@@ -4,193 +4,238 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Botanixy Plants</title>
+
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #2e7d32, #81c784);
+    font-family: 'Segoe UI', sans-serif;
+    background: #f7faf7;
 }
 
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+/* HEADER */
 header {
     background: white;
-    padding: 15px 40px;
+    padding: 15px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h1 {
+h1 {
     color: #2e7d32;
 }
 
-nav a {
-    margin-left: 20px;
+/* NAV */
+.nav-link {
+    margin-left: 15px;
     text-decoration: none;
-    color: #2e7d32;
-    font-weight: bold;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: 0.3s;
 }
 
+.nav-link:hover {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.nav-link.active {
+    background: #2e7d32;
+    color: white;
+}
+
+/* SEARCH */
 .search {
+    padding: 25px 20px;
     text-align: center;
-    padding: 30px;
 }
 
 .search input {
-    width: 60%;
-    padding: 12px;
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 18px;
     border-radius: 25px;
-    border: none;
+    border: 1px solid #ddd;
     outline: none;
 }
 
-.container {
-    padding: 20px 40px;
+.search input:focus {
+    border-color: #2e7d32;
 }
 
+/* GRID */
 .grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 20px;
-    justify-content: center;
+    padding-bottom: 40px;
 }
 
-/* Plant Card */
+/* CARD */
 .card {
     background: white;
-    border-radius: 15px;
-    width: 250px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
+.card:hover {
+    transform: translateY(-6px);
+}
+
+/* FIXED IMAGE */
 .card img {
     width: 100%;
-    height: 180px;
+    aspect-ratio: 1/1;
     object-fit: cover;
 }
 
+/* CONTENT */
 .card-content {
     padding: 15px;
+    flex-grow: 1;
 }
 
 .card h3 {
+    margin: 0;
     color: #2e7d32;
-    margin: 5px 0;
 }
 
 .card p {
     font-size: 14px;
+    color: #555;
 }
 
+/* TAGS */
 .tag {
     display: inline-block;
     background: #e8f5e9;
     color: #2e7d32;
     padding: 4px 8px;
-    border-radius: 10px;
-    margin: 3px;
+    border-radius: 5px;
     font-size: 12px;
+    margin-right: 5px;
+    margin-top: 5px;
 }
 
+/* BUTTON */
 button {
     margin-top: 10px;
-    padding: 8px 15px;
+    width: 100%;
+    padding: 10px;
     background: #2e7d32;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: 500;
 }
 
 button:hover {
     background: #1b5e20;
 }
 
-/* Tips Section */
+/* TIPS */
 .tips {
-    background: white;
-    margin: 40px;
-    padding: 20px;
-    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 900px;
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    padding: 25px;
+    border-radius: 20px;
 }
 
 .tips h2 {
     color: #2e7d32;
 }
 
+/* FOOTER */
 footer {
-    text-align: center;
-    padding: 20px;
     background: #1b5e20;
     color: white;
+    text-align: center;
+    padding: 20px;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1>Botanixy</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Plants</a>
-        <a href="#">Care</a>
-        <a href="#">Login</a>
-    </nav>
+    <div class="container header-inner">
+        <h1>🌿 Botanixy</h1>
+        <nav>
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link active">Plants</a>
+            <a href="#" class="nav-link">Care</a>
+        </nav>
+    </div>
 </header>
 
+<!-- SEARCH -->
 <div class="search">
     <input type="text" placeholder="Search plants...">
 </div>
 
+<!-- PLANTS -->
 <div class="container">
     <div class="grid">
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
-            <div class="card-content">
-                <h3>Snake Plant</h3>
-                <p>Low maintenance indoor plant</p>
-                <span class="tag">Indoor</span>
-                <span class="tag">Easy</span>
-                <button>View</button>
-            </div>
-        </div>
+        <!-- PLANTS LIST -->
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-            <div class="card-content">
-                <h3>Monstera</h3>
-                <p>Beautiful tropical plant</p>
-                <span class="tag">Tropical</span>
-                <span class="tag">Medium</span>
-                <button>View</button>
-            </div>
-        </div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6"><div class="card-content"><h3>Snake Plant</h3><p>Low maintenance indoor plant</p><span class="tag">Indoor</span><span class="tag">Easy</span><button>View</button></div></div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1509423350716-97f2360afc0a">
-            <div class="card-content">
-                <h3>Aloe Vera</h3>
-                <p>Medicinal and easy care</p>
-                <span class="tag">Succulent</span>
-                <span class="tag">Easy</span>
-                <button>View</button>
-            </div>
-        </div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"><div class="card-content"><h3>Monstera</h3><p>Tropical indoor beauty</p><span class="tag">Tropical</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1509423350716-97f2360afc0a"><div class="card-content"><h3>Aloe Vera</h3><p>Medicinal succulent</p><span class="tag">Succulent</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1593697820987-5c8c7e8a0f59"><div class="card-content"><h3>Money Plant</h3><p>Perfect beginner plant</p><span class="tag">Indoor</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1587502537104-4e83e5f9e0c5"><div class="card-content"><h3>Spider Plant</h3><p>Air purifying</p><span class="tag">Air</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1603899123434-1f56c1cfe5e5"><div class="card-content"><h3>Rubber Plant</h3><p>Modern decor plant</p><span class="tag">Indoor</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1587502537745-84d4aa8f6fbb"><div class="card-content"><h3>Jade Plant</h3><p>Symbol of prosperity</p><span class="tag">Succulent</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1524594157365-7b0d287a7c66"><div class="card-content"><h3>Peace Lily</h3><p>Elegant flowering plant</p><span class="tag">Flowering</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"><div class="card-content"><h3>Areca Palm</h3><p>Bright indoor plant</p><span class="tag">Indoor</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1601985705806-5b9a71f6004f"><div class="card-content"><h3>ZZ Plant</h3><p>Extremely low maintenance</p><span class="tag">Easy</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1582560475093-ba66accbc424"><div class="card-content"><h3>Cactus</h3><p>Perfect for dry spaces</p><span class="tag">Low Water</span><button>View</button></div></div>
+
+        <div class="card"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013"><div class="card-content"><h3>Philodendron</h3><p>Classic indoor foliage</p><span class="tag">Indoor</span><button>View</button></div></div>
 
     </div>
 </div>
 
+<!-- TIPS -->
 <div class="tips">
-    <h2>Plant Care Tips 🌱</h2>
+    <h2>Plant Care Tips</h2>
     <p>• Water plants early morning or evening</p>
     <p>• Avoid overwatering</p>
-    <p>• Keep plants in suitable sunlight</p>
+    <p>• Give proper sunlight</p>
     <p>• Clean leaves regularly</p>
 </div>
 
 <footer>
-    <p>© 2026 Botanixy</p>
+    <p>© 2026 Botanixy 🌿</p>
 </footer>
 
 </body>
