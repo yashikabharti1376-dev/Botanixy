@@ -173,6 +173,45 @@ footer {
 }
 </style>
 </head>
+<script>
+async function loadPlantsFromAPI() {
+    try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+
+        const container = document.getElementById("plantContainer");
+        if (!container) return;
+
+        // OPTIONAL: remove static plants
+        // container.innerHTML = "";
+
+        data.slice(0, 8).forEach(item => {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <img src="${item.image}">
+                <div class="card-content">
+                    <h3>${item.title.substring(0, 20)}</h3>
+                    <p>${item.category}</p>
+                    <span class="tag">${item.category}</span>
+                    <button>View</button>
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.log("API Error:", error);
+
+        const container = document.getElementById("plantContainer");
+        container.innerHTML += "<p>⚠️ Failed to load plants</p>";
+    }
+}
+
+window.addEventListener("DOMContentLoaded", loadPlantsFromAPI);
+</script>
 
 <body>
 
@@ -197,7 +236,7 @@ footer {
 
 <!-- PLANTS -->
 <div class="container">
-    <div class="grid">
+    <div class="grid" id="plantContainer">
 
         <div class="card"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6"><div class="card-content"><h3>Snake Plant</h3><p>Low maintenance indoor plant</p><span class="tag">Indoor</span><span class="tag">Easy</span><button>View</button></div></div>
 
